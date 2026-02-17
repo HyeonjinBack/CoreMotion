@@ -8,8 +8,8 @@
 import SwiftUI
 import CoreMotion
 
+// 1) initial commit
 struct ContentView: View {
-    
     var body: some View {
     }
 }
