@@ -9,7 +9,59 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                
+                HStack(spacing: 16) {
+                    Group {
+                        Button {
+                            
+                        } label: {
+                            ZStack {
+                                Circle()
+                                
+                                Image(systemName: "gear")
+                                    .resizable()
+                                    .foregroundStyle(.white)
+                                    .padding()
+                            }
+                            .frame(width: 80, height: 80)
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            ZStack {
+                                Circle()
+                                
+                                Text("시작하기")
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundStyle(.white)
+                            }
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            ZStack {
+                                Circle()
+                                
+                                Image("airpodsconnect")
+                                    .resizable()
+                                    .foregroundStyle(.white)
+                                    .padding(8)
+                            }
+                            .frame(width: 80, height: 80)
+                        }
+                    }
+                    .foregroundStyle(.black)
+                }
+                .padding()
+            }
+            .navigationTitle("Run")
+            .navigationBarTitleDisplayMode(.large)
+        }
     }
 }
 
