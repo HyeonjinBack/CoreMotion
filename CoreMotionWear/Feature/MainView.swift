@@ -8,59 +8,73 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var showPostureSetting = false
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                
-                HStack(spacing: 16) {
-                    Group {
-                        Button {
-                            
-                        } label: {
-                            ZStack {
-                                Circle()
+        NavigationStack {
+            ZStack {
+                MapView()
+                    .edgesIgnoringSafeArea(.bottom)
+        
+                VStack {
+                    Spacer()
+                    HStack(spacing: 24) {
+                        Group {
+                            Button {
                                 
-                                Image(systemName: "gear")
-                                    .resizable()
-                                    .foregroundStyle(.white)
-                                    .padding()
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                    
+                                    Image(systemName: "gear")
+                                        .resizable()
+                                        .foregroundStyle(.white)
+                                        .padding()
+                                }
+                                .frame(width: 80, height: 80)
                             }
-                            .frame(width: 80, height: 80)
-                        }
-                        
-                        Button {
                             
-                        } label: {
-                            ZStack {
-                                Circle()
+                            Button {
                                 
-                                Text("시작하기")
-                                    .font(.title)
-                                    .bold()
-                                    .foregroundStyle(.white)
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                    
+                                    Text("시작하기")
+                                        .font(.title)
+                                        .bold()
+                                        .foregroundStyle(.white)
+                                }
                             }
-                        }
-                        
-                        Button {
                             
-                        } label: {
-                            ZStack {
-                                Circle()
+                            Button {
                                 
-                                Image("airpodsconnect")
-                                    .resizable()
-                                    .foregroundStyle(.white)
-                                    .padding(8)
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                    
+                                    Image("airpodsconnect")
+                                        .resizable()
+                                        .foregroundStyle(.white)
+                                        .padding(8)
+                                }
+                                .frame(width: 80, height: 80)
                             }
-                            .frame(width: 80, height: 80)
                         }
+                        .foregroundStyle(.black)
                     }
-                    .foregroundStyle(.black)
+                    .padding()
+                    
+                    RoundedButton(title: "자세 설정", font: .footnote, foregroundColor: .white, backgroundColor: .secondary, rotatingAnimation: true) {
+                        showPostureSetting = true
+                    }
                 }
-                .padding()
+                .navigationTitle("Run")
+                .navigationBarTitleDisplayMode(.large)
             }
-            .navigationTitle("Run")
-            .navigationBarTitleDisplayMode(.large)
+        }
+        .sheet(isPresented: $showPostureSetting) {
+            PostureDashboardView()
         }
     }
 }
